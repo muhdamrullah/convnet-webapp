@@ -21,11 +21,11 @@
   // ------------------------
   // BEGIN MNIST SPECIFIC STUFF
   // ------------------------
-  classes_txt = ['0','1','2','3','4','5','6','7','8','9'];
+  classes_txt = ['North-South','East-West','Flat roof','Others'];
   var dataset_name = "mnist";
-  var num_batches = 21; // 20 training batches, 1 test
-  var test_batch = 20;
-  var num_samples_per_batch = 3000;
+  var num_batches = 11; // 10 training batches, 1 test
+  var test_batch = 10;
+  var num_samples_per_batch = 1000;
   var image_dimension = 28;
   var image_channels = 1;
   var use_validation_data = true;
@@ -44,7 +44,7 @@
   net = new convnetjs.Net();\n\
   net.makeLayers(layer_defs);\n\
   \n\
-  trainer = new convnetjs.SGDTrainer(net, {method:'adadelta', batch_size:20, l2_decay:0.001});\n\
+  trainer = new convnetjs.SGDTrainer(net, {method:'adadelta', batch_size:10, l2_decay:0.001});\n\
   ";
   // ------------------------
   // END MNIST SPECIFIC STUFF
@@ -58,15 +58,15 @@
   <h2 style="text-align: center;"><a href="http://cs.stanford.edu/people/karpathy/convnetjs/">ConvNetJS</a> MNIST demo</h2>
   <h1>Description</h1>
   <p>
-    This demo trains a Convolutional Neural Network on the <a href="http://yann.lecun.com/exdb/mnist/">MNIST digits dataset</a> in your browser, with nothing but Javascript. The dataset is fairly easy and one should expect to get somewhere around 99% accuracy within few minutes. I used <a href="mnist_parse.zip">this python script</a> to parse the <a href="http://deeplearning.net/tutorial/gettingstarted.html">original files</a> into batches of images that can be easily loaded into page DOM with img tags.
+    This demo trains a Convolutional Neural Network on the <a href="https://inclass.kaggle.com/c/data-science-game-2016-online-selection/data">Roof Orientation dataset</a> in your browser, with nothing but Javascript. The dataset is fairly divided into four categories and one should expect to get somewhere around 60% accuracy within few minutes.
   </p>
   <p>
-    This network takes a 28x28 MNIST image and crops a random 24x24 window before training on it (this technique is called data augmentation and improves generalization). Similarly to do prediction, 4 random crops are sampled and the probabilities across all crops are averaged to produce final predictions. The network runs at about 5ms for both forward and backward pass on my reasonably decent Ubuntu+Chrome machine.
+    This network takes a 28x28 roof image and crops a random 24x24 window before training on it (this technique is called data augmentation and improves generalization). Similarly to do prediction, 4 random crops are sampled and the probabilities across all crops are averaged to produce final predictions. The network runs at about 5ms for both forward and backward pass on my reasonably decent Ubuntu+Chrome machine.
   </p>
   <p>
     By default, in this demo we're using Adadelta which is one of per-parameter adaptive step size methods, so we don't have to worry about changing learning rates or momentum over time. However, I still included the text fields for changing these if you'd like to play around with SGD+Momentum trainer.
   </p>
-  <p>Report questions/bugs/suggestions to <a href="https://twitter.com/karpathy">@karpathy</a>.</p>
+  <p>Report questions/bugs/suggestions to <a href="https://twitter.com/muhdamrullah">@muhdamrullah</a>.</p>
   <h1>Training Stats</h1>
   <div class="divsec" style="270px;">
     <div class="secpart">
@@ -137,6 +137,4 @@
   </div>  
 </body>
 </html>
-
-
 
